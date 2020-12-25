@@ -1,0 +1,21 @@
+version: "2"
+
+services:
+  contactapp:
+    image: adbel/contactapp:latest
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      # Storage path for mongodb
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:
+    driver: local
